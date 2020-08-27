@@ -1,0 +1,12 @@
+.sidebar-row {
+	display: flex;
+	padding: 15px;
+}
+
+.sidebar-text {
+	padding-left: 15px;
+}
+
+.sidebar-row:hover {
+	background-color: azure;
+}

@@ -1,21 +1,24 @@
 import React from 'react';
 import './App.css';
-import Header from './Header';
+import Header from './Components/Header';
+import Sidebar from './Components/Sidebar';
 
 function App() {
   return (
     <div className="App">
-      <h1>Making a facebook clone</h1>
-      
+  
       <Header />
 
-        {/* Side bar */}
+        <div className="app-body">
+          <Sidebar />
 
         {/* Video Cards */}
 
         {/* Create Post */}
 
         {/* Posts List */}
+
+        </div>
 
 
 
