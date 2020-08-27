@@ -6,7 +6,7 @@ function SidebarRow(props) {
   const { src, Icon, title } = props;
 
   return (
-    <div className="sidebar-row">
+    <div className="sidebarRow">
       {src && <Avatar src={src} />}
       {Icon && <Icon />}
 
