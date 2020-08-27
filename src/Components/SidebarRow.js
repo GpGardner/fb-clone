@@ -2,8 +2,7 @@ import React from "react";
 import "./SidebarRow.css";
 import { Avatar } from "@material-ui/core";
 
-function SidebarRow(props) {
-  const { src, Icon, title } = props;
+function SidebarRow({ src, Icon, title }) {
 
   return (
     <div className="sidebarRow">

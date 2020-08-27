@@ -9,9 +9,7 @@ import StorefrontIcon from "@material-ui/icons/Store"
 import VideoLibraryIcon from "@material-ui/icons/VideoLibraryOutlined"
 import ExpandMoreOutLined from "@material-ui/icons/ExpandMoreOutlined"
 
-function Sidebar(props) {
-
-	const {} = props
+function Sidebar({}) {
 
 	return (
 		<div className="sidebar">
