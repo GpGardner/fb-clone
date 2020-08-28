@@ -1,8 +1,36 @@
 .createPost {
-	flex: 1;
-	margin: 35px 10px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 30px;
+	width: 100%;
 	padding: 25px;
-	border-radius: 10px;
+	border-radius: 15px;
 	box-shadow: 0px 5px 17px -7px rgba(0,0,0,0.75);
 	background-color:white;
+}
+
+.createPost-top{
+	display: flex;
+	border-bottom: 1px solid #eff2f5;
+	padding: 15px;
+}
+
+.createPost-top > form {
+	flex: 1;
+	display: flex;
+}
+
+.createPost-top > form > input {
+	outline-width: 0;
+	border: none;
+	padding: 5px 20px;
+	margin: 0 10px;
+	border-radius: 999px;
+	background-color: #eff2f5;
+}
+
+.createPost-bottom{
+	display: flex;
+	padding: 10px;
+	justify-content: space-around;
 }

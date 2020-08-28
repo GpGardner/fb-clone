@@ -1,6 +1,9 @@
 import React from 'react'
 import "./CreatePost.css"
 import { Avatar } from '@material-ui/core'
+import VideoCamIcon from '@material-ui/icons/Videocam'
+import PhotoLibraryIcon from '@material-ui/icons/PhotoLibrary'
+import InsertEmoticonIcon from '@material-ui/icons/InsertEmoticon'
 
 function CreatePost() {
 
@@ -24,9 +27,18 @@ function CreatePost() {
 				</form>
 			</div>
 			<div className="createPost-bottom">
-				{/* Live Video */}
-				{/* Photo Video */}
-				{/* Feeling Activity */}
+				<div className="createPost-option">
+					<VideoCamIcon style={{ color: "red" }}/>
+					<h3>Live Video</h3>
+				</div>
+				<div className="createPost-option">
+					<PhotoLibraryIcon style={{ color: "green" }}/>
+					<h3>Live Video</h3>
+				</div>
+				<div className="createPost-option">
+					<InsertEmoticonIcon style={{ color: "yellow" }}/>
+					<h3>Live Video</h3>
+				</div>
 			</div>
 
 		</div>
