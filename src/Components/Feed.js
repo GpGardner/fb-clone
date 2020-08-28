@@ -1,6 +1,7 @@
 import React from 'react'
 import './Feed.css'
 import StoryBoard from './StoryBoard'
+import CreatePost from './CreatePost'
 
 function Feed() {
 	return (
@@ -9,8 +10,8 @@ function Feed() {
 
 			<StoryBoard />
 
-			{/* Create Post */}
 
+			<CreatePost />
 			{/* Posts */}
 
 
