@@ -81,6 +81,10 @@
 	color: #2e81f4;
 }
 
+.post-optionCommentActive {
+	color: #78C257;
+}
+
 .post-addComment > form {
 	flex: 1;
 	display: flex;

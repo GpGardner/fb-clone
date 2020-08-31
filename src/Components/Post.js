@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Post.css";
 import db from "../firebase";
+import firebase from "firebase";
 import { useStateValue } from "../StateProvider";
+import Comment from "./Comment";
 
 import Avatar from "@material-ui/core/Avatar";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
@@ -21,8 +23,9 @@ function Post({
 }) {
   const [{ user }, dispatch] = useStateValue();
   const [likes, setLikes] = useState([...numLikes]);
-	const [addComment, setAddComment] = useState(true);
-	const [comment, setComment] = useState('');
+  const [addComment, setAddComment] = useState(false);
+  const [commentInput, setCommentInput] = useState("");
+  const [comments, setComments] = useState([]);
 
   const toggleLike = () => {
     if (!likeCheck()) {
@@ -46,10 +49,36 @@ function Post({
     return likes.includes(user.email);
   };
 
-  const handleSubmit = () => {
-		console.log(comment);
-		setComment('');
-	}
+  const handleSubmit = (e) => {
+    e.preventDefault();
+		
+		db.collection("posts")
+			.doc(id)
+			.collection("comments")
+			.add({
+				commenterMessage: commentInput,
+				commenterName: user.displayName,
+				commenterProfilePic: user.photoURL,
+      	timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+			})
+
+    setCommentInput("");
+  };
+
+  useEffect(() => {
+    db.collection("posts")
+      .doc(id)
+			.collection("comments")
+			.orderBy("timestamp", "asc")
+      .onSnapshot((snapshot) =>
+        setComments(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        )
+      );
+  }, []);
 
   return (
     <div className="post">
@@ -71,8 +100,6 @@ function Post({
         </div>
       ) : null}
 
-      
-
       <div className="post-options">
         <div
           className={`post-optionLike ${
@@ -85,7 +112,14 @@ function Post({
             {numLikes.length > 0 ? `${numLikes.length} Like(s)` : "Like"}
           </p>
         </div>
-        <div className="post-option" onClick={() => setAddComment(!addComment)}>
+        <div
+          className={`post-option ${
+            addComment ? `post-optionCommentActive` : null
+          }`}
+          onClick={() => {
+            setAddComment(!addComment);
+          }}
+        >
           <ChatBubbleOutlineIcon />
           <p className="post-buttonText">Comment</p>
         </div>
@@ -99,12 +133,23 @@ function Post({
         </div>
       </div>
 
-			{addComment ? (
+      {comments
+        ? comments.map((comment) => (
+            <Comment
+              key={comment.id}
+              commenterProfilePic={comment.data.commenterProfilePic}
+              commenterName={comment.data.commenterName}
+              commenterMessage={comment.data.commenterMessage}
+            />
+          ))
+        : null}
+
+      {addComment ? (
         <div className="post-addComment">
           <form onSubmit={handleSubmit}>
             <input
-              value={comment}
-              onChange={(e) => setComment(e.target.value)}
+              value={commentInput}
+              onChange={(e) => setCommentInput(e.target.value)}
               placeholder={`Write a comment...`}
               className="post-addCommentInput"
             />
@@ -112,7 +157,6 @@ function Post({
           </form>
         </div>
       ) : null}
-			
     </div>
   );
 }
