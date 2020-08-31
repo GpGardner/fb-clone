@@ -11,7 +11,7 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle"
 
 
 function Post({profilePic, image, username, timestamp, message}) {
-	console.log(message)
+
 	return (
 		<div className="post">
 			<div className="post-top">
@@ -27,9 +27,9 @@ function Post({profilePic, image, username, timestamp, message}) {
 				<p>{message}</p>
 			</div>
 
-			<div className="post-image">
+			{image ? (<div className="post-image">
 				<img src={image} alt="users provided"/>
-			</div>
+			</div>): null}
 			
 			<div className="post-options">
 				<div className="post-option">
