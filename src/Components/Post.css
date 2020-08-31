@@ -66,3 +66,18 @@
 	background-color: #eff2f5;
 	border-radius: 10px;
 }
+.post-optionLike {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 5px;
+	flex: 1;
+}
+
+.post-optionLike:hover {
+	color: #2e81f4
+}
+
+.post-optionLikeActive {
+	color: #2e81f4;
+}

@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Post.css'
+import db from '../firebase'
+import { useStateValue } from '../StateProvider'
 
 import Avatar from '@material-ui/core/Avatar'
 import ThumbUpIcon from "@material-ui/icons/ThumbUp"
@@ -10,7 +12,30 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle"
 
 
 
-function Post({profilePic, image, username, timestamp, message}) {
+
+function Post({profilePic, image, username, timestamp, message, numLikes, id}) {
+	const [{ user }, dispatch] = useStateValue();
+	const [likes, setLikes] = useState([...numLikes]);
+
+	const toggleLike = () => {
+		if(!likeCheck()){
+			db.collection('posts').doc(id).update({
+				numLikes: [...numLikes, user.email],
+			})
+			setLikes([...likes, user.email]);
+		}else {
+			db.collection('posts').doc(id).update({
+				numLikes: numLikes.filter((email) => email !== user.email)
+			})
+			setLikes(likes.filter((email) => email !== user.email))
+		}
+	}
+
+	const likeCheck = () => {
+			return (likes.includes(user.email));
+	}
+
+	// console.log(likeCheck());
 
 	return (
 		<div className="post">
@@ -32,9 +57,11 @@ function Post({profilePic, image, username, timestamp, message}) {
 			</div>): null}
 			
 			<div className="post-options">
-				<div className="post-option">
+				<div className={`post-optionLike ${ likeCheck() ? "post-optionLikeActive" : null}`} onClick={toggleLike}>
 					<ThumbUpIcon />
-					<p className="post-buttonText">Like</p>
+					<p className={"post-buttonText"}>
+						{ numLikes.length > 0 ? (`${numLikes.length} Like(s)`) : "Like"} 
+						</p>
 				</div>
 				<div className="post-option">
 					<ChatBubbleOutlineIcon />
@@ -54,4 +81,4 @@ function Post({profilePic, image, username, timestamp, message}) {
 	)
 }
 
-export default Post
+export default Post;
