@@ -5,12 +5,12 @@ import './StoryCard.css'
 import { Avatar } from '@material-ui/core'
 
 
-function StoryCard({image, profileSrc, title}) {
+function StoryCard({image, profilePic, title}) {
 
 
 	return (
 		<div style={{backgroundImage: `url(${image})`}} className='storyCard'>
-			<Avatar className="storyCard-Avatar" src={profileSrc}/>
+			<Avatar className="storyCard-Avatar" src={profilePic}/>
 			<h4>{title}</h4>
 		</div>
 	)
