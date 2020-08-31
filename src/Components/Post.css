@@ -5,8 +5,6 @@
 	background-color: white;
 	box-shadow: 0px 5px 17px -7px rgba(0,0,0,0.75);
 	padding: 10px 25px;
-	
-
 }
 
 .post-top {
@@ -42,6 +40,7 @@
 .post-options {
 	padding-top: 10px;
 	border-top: 1px solid lightgray;
+	border-bottom: 1px solid lightgray;
 	display: flex;
 	justify-content: space-evenly;
 	font-size: medium;
@@ -80,4 +79,23 @@
 
 .post-optionLikeActive {
 	color: #2e81f4;
+}
+
+.post-addComment > form {
+	flex: 1;
+	display: flex;
+}
+
+.post-addComment > form > button {
+	display: none;
+}
+
+.post-addComment > form > input {
+	outline-width: 0;
+	border: none;
+	padding: 5px 20px;
+	margin: 10px;
+	border-radius: 999px;
+	background-color: #eff2f5;
+	flex: 1;
 }
