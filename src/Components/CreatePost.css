@@ -31,6 +31,33 @@
 
 .createPost-bottom{
 	display: flex;
-	padding: 10px;
-	justify-content: space-around;
+	justify-content: space-evenly;
+}
+
+.createPost-option {
+	padding: 20px;
+	display: flex;
+	align-items: center;
+	color: gray;
+	margin: 5px;
+}
+
+
+.createPost-top > form > button {
+	display: none;
+}
+
+.createPost-input {
+	flex: 1;
+}
+
+.createPost-option > h3 {
+	font-size: medium;
+	margin-left: 10px;
+	cursor: pointer;
+}
+
+.createPost-option:hover {
+	background-color: #eff2f5;
+	border-radius: 20px;
 }
