@@ -50,6 +50,10 @@
 	padding: 15px;
 }
 
+.post-buttonText {
+	margin-left: 5px;
+}
+
 .post-option {
 	display: flex;
 	align-items: center;

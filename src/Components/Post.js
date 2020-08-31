@@ -34,15 +34,15 @@ function Post({profilePic, image, username, timestamp, message}) {
 			<div className="post-options">
 				<div className="post-option">
 					<ThumbUpIcon />
-					<p>Like</p>
+					<p className="post-buttonText">Like</p>
 				</div>
 				<div className="post-option">
 					<ChatBubbleOutlineIcon />
-					<p>Comment</p>
+					<p className="post-buttonText">Comment</p>
 				</div>
 				<div className="post-option">
 					<NearMeIcon />
-					<p>Share</p>
+					<p className="post-buttonText">Share</p>
 				</div>
 				<div className="post-option">
 					<AccountCircleIcon />
