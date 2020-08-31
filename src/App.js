@@ -4,9 +4,12 @@ import Header from "./Components/Header";
 import Sidebar from "./Components/Sidebar";
 import Feed from "./Components/Feed";
 import Login from "./Components/Login";
+import {useStateValue} from "./StateProvider"
 
 function App() {
-  const user = null;
+
+  const [{ user }, dispatch] = useStateValue();
+  console.log(user);
   return (
     <div className="App">
       {!user ? (
