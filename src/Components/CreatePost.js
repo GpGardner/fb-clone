@@ -22,6 +22,7 @@ function CreatePost() {
       profilePic: user.photoURL,
       username: user.displayName,
       image: imageUrl,
+      numLikes: [user.email]
     })
 		
     setInput('');
